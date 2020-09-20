@@ -53,39 +53,18 @@
                         </div>
                     <!-- </div>s -->
                 </div>
-                <div class="container" style="float:left; max-width: 800px; margin-left: 100px;">
+                <div class="container" style="float:left; max-width: 910px; margin-left: 100px; position: fixed; right:40px;">
                     <!-- <div class="col-xs-12"> -->
                         <div class="result">
                             
-                            <!-- <table class="table"> -->
-                            <!-- <thead>
-                            <tr>
-                                <th>条件項目</th>
-                                <th>取得単位数</th>
-                                <th>卒業に必要な最低単位数</th>
-                                <th>総数に参入可能な単位数</th>
-                                <th>判定</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="item in requirements">
-                                <td>{{ item.name }} </td>
-                                <td>{{ item.get }}</td>
-                                <td>{{ item.border }}</td>
-                                <td>{{ item.summable }}</td>
-                                <td>{{ item.result }}</td>
-                                <td>{{ item.message }}</td>
-                            </tr>
-                        </tbody> -->
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>条件項目</th>
                                         <th>取得単位数</th>
                                         <th>卒業に必要な最低単位数</th>
-                                        <th>総数に参入可能な単位数</th>
-                                        <th>判定</th>
+                                        <th>総数に算入可能な単位数</th>
+                                        <th width="250px">判定</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -106,7 +85,7 @@
                                                 aria-describedby="basic-addon2" id="jinbun"></td>
                                         <td>{{ requirements[1].border }}</td>
                                         <td>{{ requirements[1].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyo(1)[0] }}<br>{{ resultKyoyo(1)[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -116,7 +95,7 @@
                                                 aria-describedby="basic-addon2" id="syakai"></td>
                                         <td>{{ requirements[2].border }}</td>
                                         <td>{{ requirements[2].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyo(2)[0] }}<br>{{ resultKyoyo(2)[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -126,7 +105,7 @@
                                                 aria-describedby="basic-addon2" id="shizen"></td>
                                         <td>{{ requirements[3].border }}</td>
                                         <td>{{ requirements[3].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyo(1)[0] }}<br>{{ resultKyoyo(3)[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -136,7 +115,7 @@
                                                 aria-describedby="basic-addon2" id="hukugou"></td>
                                         <td>{{ requirements[4].border }}</td>
                                         <td>{{ requirements[4].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyo(4)[0] }}<br>{{ resultKyoyo(4)[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -146,7 +125,7 @@
                                                 aria-describedby="basic-addon2" id="sports"></td>
                                         <td>{{ requirements[5].border }}</td>
                                         <td>{{ requirements[5].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyo(5)[0] }}<br>{{ resultKyoyo(5)[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -177,12 +156,12 @@
                                         <td>{{ requirements[8].message }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(200, 255, 237);">
-                                        <!-- 教養科目の合計 -->
+                                        <!-- 全共科目の合計 -->
                                         <td>{{ requirements[9].name }}</td>
                                         <td>{{ sumKyoyo }}</td>
                                         <td>{{ requirements[9].border }}</td>
                                         <td>{{ requirements[9].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKyoyoSum[0] }}　{{ resultKyoyoSum[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -191,7 +170,7 @@
                                         <td>{{ sumKiso }}</td>
                                         <td>{{ requirements[10].border }}</td>
                                         <td>{{ requirements[10].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKogakubuKiso[0] }}　{{ resultKogakubuKiso[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -200,7 +179,7 @@
                                         <td>{{ sumGakka }}</td>
                                         <td>{{ requirements[11].border }}</td>
                                         <td>{{ requirements[11].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultGakka[0] }}　{{ resultGakka[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr>
@@ -209,7 +188,7 @@
                                         <td>{{ sumKosu }}</td>
                                         <td>{{ requirements[12].border }}</td>
                                         <td>{{ requirements[12].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ resultKosu[0] }}　{{ resultKosu[1] }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(240, 240, 240);">
@@ -219,7 +198,7 @@
                                                 aria-describedby="basic-addon2" id="kanagata"></td>
                                         <td>{{ requirements[13].border }}</td>
                                         <td>{{ requirements[13].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ requirements[13].result }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(240, 240, 240);">
@@ -229,7 +208,7 @@
                                                 aria-describedby="basic-addon2" id="koukuu"></td>
                                         <td>{{ requirements[14].border }}</td>
                                         <td>{{ requirements[14].summable }}</td>
-                                        <td>{{  }}</td>
+                                        <td>{{ requirements[14].result }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(240, 240, 240);">
@@ -238,8 +217,8 @@
                                         <td><input type="text" v-model=requirements[15].get class="form-control"
                                                 aria-describedby="basic-addon2" id="tagakka"></td>
                                         <td>{{ requirements[15].border }}</td>
-                                        <td rowspan="2">{{ requirements[15].summable }}</td>
-                                        <td rowspan="2">{{  }}</td>
+                                        <td>{{ requirements[15].summable }}</td>
+                                        <td>{{  requirements[15].result}}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(240, 240, 240);">
@@ -248,8 +227,8 @@
                                         <td><input type="text" v-model=requirements[16].get class="form-control"
                                                 aria-describedby="basic-addon2" id="tadaigaku"></td>
                                         <td>{{ requirements[16].border }}</td>
-                                        <!-- <td>{{ requirements[16].summable }}</td>
-                                        <td>{{  }}</td> -->
+                                        <td>{{ requirements[16].summable }}</td>
+                                        <td>{{ requirements[16].result }}</td>
                                         <td>{{  }}</td>
                                     </tr>
                                     <tr style="background-color: rgb(255, 221, 221);">
@@ -264,6 +243,11 @@
                                 </tbody>
                             </table>
                             <!-- </table> -->
+                            <p>*1 : 金型創生技術科目,航空宇宙生産技術科目,他学科開講科目,他大学での履修科目にはそれぞれ総単位数に算入可能な数に上限がありますが、超過した場合でも自動調整は入りません。入力時に手動にて修正する必要があります。</p>
+                            <p>*2 : 他学科開講科目とは「同一学科他コース開講のコース科目、開講他学科開講の学科共通科目とコース科目を」指します。他大学での履修科目がある場合はそれを含めて10単位までが総単位数に算入可能です。</p>
+                            <p>*3 : 教職科目の単位は総単位数に算入することはできません。</p>
+                            <p>*4 : 媒体によっては工学概論(4種)および技術と技術者の倫理はまとめて6単位分の「教養基礎」と表記されている場合があります。</p>
+                            
                         </div>
                     <!-- </div> -->
 
