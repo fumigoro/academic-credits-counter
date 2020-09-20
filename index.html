@@ -1,0 +1,131 @@
+<!-- <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+
+</head>
+<body>
+    <script type="text/javascript" src="script.js"></script>
+    <div class="main">
+        <table border="1">
+            <tr>
+                <th>履修</th><th>分類</th><th>必修</th><th>科目名</th><th>単位数</th><th>開講時期</th><th>優先</th>
+                
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>基礎科目</td>
+                <td></td>
+                <td>情報数学</td>
+                <td>2</td>
+                <td>2年前期</td>
+                <td>情報</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Vue で Hello World</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="hold-transition fixed skin-blue-light sidebar-mini ">
+<div class="wrapper" >
+<div style="margin: 20px;">
+
+</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-7">
+				<div id="app">
+                    <div class="lectures-list-input">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>履修</th>
+                                    <th>分類</th>
+                                    <!-- <th>必修</th> -->
+                                    <th>科目名</th>
+                                    <th>単位数</th>
+                                    <th>開講時期</th>
+                                    <th>優先</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in main">
+                                    <td><input type="checkbox" v-bind:id="item.id" v-model="item.take" v-bind:disabled="item.compulsory" name="taken-checkbox"></td>
+                                    <td>{{ item.subjectCategory }}</td>
+                                    <!-- <td>{{ item.take }}</td> -->
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.credits }}</td>
+                                    <td>{{ item.grade }}</td>
+                                    <td>{{ item.priority }}</td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="result">
+                        合計：{{ sum }}
+                    </div>
+
+                    <div class="liberal-arts-input">
+                        <h4>全共科目の取得(予定含む)単位数</h4>
+                        
+                        <div class="input-group mb-3">
+                            <label for="jinbun">人文科学</label><input type="text" v-model=other.jinbun class="form-control" aria-describedby="basic-addon2" id="jinbun">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">社会科学</label><input type="text" v-model=other.syakai class="form-control" aria-describedby="basic-addon2" id="syakai">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">自然科学</label><input type="text" v-model=other.shizen class="form-control" aria-describedby="basic-addon2"  id="shizen">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">複合領域</label><input type="text" v-model=other.hukugou class="form-control" aria-describedby="basic-addon2" id="hukugou">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">スポーツ・健康科学</label><input type="text" v-model=other.sports class="form-control" aria-describedby="basic-addon2" id="sports">
+                        </div>
+
+
+                        
+                        <h4>特別な科目の取得(予定含む)単位数</h4>
+                        
+
+                        <div class="input-group mb-3">
+                            <label for="jinbun">金型創生技術科目</label><input type="text" v-model=other.kanagata class="form-control" aria-describedby="basic-addon2" id="kanagata">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">航空宇宙生産技術科目</label><input type="text" v-model=other.koukuu class="form-control" aria-describedby="basic-addon2" id="koukuu">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">他学科開講科目</label><input type="text" v-model=other.tagakka class="form-control" aria-describedby="basic-addon2" id="tagakka">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="jinbun">他大学での履修科目</label><input type="text" v-model=other.tadaigaku class="form-control" aria-describedby="basic-addon2" id="tadaigaku">
+                        </div>
+                        
+                    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
