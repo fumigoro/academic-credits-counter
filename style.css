@@ -3,7 +3,7 @@
 body
 {
 	font-family:Helvetica, 'Helvetica Neue', 'Mplus 1p', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic' !important;
-	font-size:12px;
+	font-size:14px;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
@@ -16,3 +16,14 @@ div.app {
 	padding: 20px;
 }
 
+td input[type="text"]{
+    width:45px;
+}
+
+tr .gray{
+    background-color: rgb(185, 185, 185);
+}
+
+td[rowspan="2"]{
+    vertical-align: middle;
+}

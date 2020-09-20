@@ -1,131 +1,280 @@
-<!-- <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-
-</head>
-<body>
-    <script type="text/javascript" src="script.js"></script>
-    <div class="main">
-        <table border="1">
-            <tr>
-                <th>履修</th><th>分類</th><th>必修</th><th>科目名</th><th>単位数</th><th>開講時期</th><th>優先</th>
-                
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td>基礎科目</td>
-                <td></td>
-                <td>情報数学</td>
-                <td>2</td>
-                <td>2年前期</td>
-                <td>情報</td>
-            </tr>
-        </table>
-    </div>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Vue で Hello World</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>履修チェッカー</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="hold-transition fixed skin-blue-light sidebar-mini ">
-<div class="wrapper" >
-<div style="margin: 20px;">
+    <div class="wrapper">
+        <div style="margin: 20px;">
 
-</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-7">
-				<div id="app">
-                    <div class="lectures-list-input">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>履修</th>
-                                    <th>分類</th>
-                                    <!-- <th>必修</th> -->
-                                    <th>科目名</th>
-                                    <th>単位数</th>
-                                    <th>開講時期</th>
-                                    <th>優先</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in main">
-                                    <td><input type="checkbox" v-bind:id="item.id" v-model="item.take" v-bind:disabled="item.compulsory" name="taken-checkbox"></td>
-                                    <td>{{ item.subjectCategory }}</td>
-                                    <!-- <td>{{ item.take }}</td> -->
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.credits }}</td>
-                                    <td>{{ item.grade }}</td>
-                                    <td>{{ item.priority }}</td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        </div>
 
-                    <div class="result">
-                        合計：{{ sum }}
-                    </div>
+        <div class="row">
 
-                    <div class="liberal-arts-input">
-                        <h4>全共科目の取得(予定含む)単位数</h4>
-                        
-                        <div class="input-group mb-3">
-                            <label for="jinbun">人文科学</label><input type="text" v-model=other.jinbun class="form-control" aria-describedby="basic-addon2" id="jinbun">
+            <div id="app">
+                <div class="container" style="float:left; max-width: 700px; margin-left: 100px;">
+                    <!-- <div class="col-xs-7"> -->
+                        <div class="lectures-list-input">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>履修</th>
+                                        <th>分類</th>
+                                        <!-- <th>必修</th> -->
+                                        <th>科目名</th>
+                                        <th>単位数</th>
+                                        <th>開講時期</th>
+                                        <th>優先</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in main">
+                                        <td><input type="checkbox" v-bind:id="item.id" v-model="item.take"
+                                                v-bind:disabled="item.compulsory" name="taken-checkbox"></td>
+                                        <td>{{ item.subjectCategory }}</td>
+                                        <!-- <td>{{ item.take }}</td> -->
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.credits }}</td>
+                                        <td>{{ item.grade }}</td>
+                                        <td>{{ item.priority }}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">社会科学</label><input type="text" v-model=other.syakai class="form-control" aria-describedby="basic-addon2" id="syakai">
+                    <!-- </div>s -->
+                </div>
+                <div class="container" style="float:left; max-width: 800px; margin-left: 100px;">
+                    <!-- <div class="col-xs-12"> -->
+                        <div class="result">
+                            
+                            <!-- <table class="table"> -->
+                            <!-- <thead>
+                            <tr>
+                                <th>条件項目</th>
+                                <th>取得単位数</th>
+                                <th>卒業に必要な最低単位数</th>
+                                <th>総数に参入可能な単位数</th>
+                                <th>判定</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in requirements">
+                                <td>{{ item.name }} </td>
+                                <td>{{ item.get }}</td>
+                                <td>{{ item.border }}</td>
+                                <td>{{ item.summable }}</td>
+                                <td>{{ item.result }}</td>
+                                <td>{{ item.message }}</td>
+                            </tr>
+                        </tbody> -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>条件項目</th>
+                                        <th>取得単位数</th>
+                                        <th>卒業に必要な最低単位数</th>
+                                        <th>総数に参入可能な単位数</th>
+                                        <th>判定</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- 初年次セミナー -->
+                                        <td>{{ requirements[0].name }}</td>
+                                        <td>{{ requirements[0].get }}</td>
+                                        <td>{{ requirements[0].border }}</td>
+                                        <td>{{ requirements[0].summable }}</td>
+                                        <td>{{ requirements[0].result }}</td>
+                                        <td>{{ requirements[0].message }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 人文科学 -->
+                                        <td>{{ requirements[1].name }}</td>
+                                        <td><input type="text" v-model=requirements[1].get class="form-control"
+                                                aria-describedby="basic-addon2" id="jinbun"></td>
+                                        <td>{{ requirements[1].border }}</td>
+                                        <td>{{ requirements[1].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 社会科学 -->
+                                        <td>{{ requirements[2].name }}</td>
+                                        <td><input type="text" v-model=requirements[2].get class="form-control"
+                                                aria-describedby="basic-addon2" id="syakai"></td>
+                                        <td>{{ requirements[2].border }}</td>
+                                        <td>{{ requirements[2].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 自然科学 -->
+                                        <td>{{ requirements[3].name }}</td>
+                                        <td><input type="text" v-model=requirements[3].get class="form-control"
+                                                aria-describedby="basic-addon2" id="shizen"></td>
+                                        <td>{{ requirements[3].border }}</td>
+                                        <td>{{ requirements[3].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 複合領域 -->
+                                        <td>{{ requirements[4].name }}</td>
+                                        <td><input type="text" v-model=requirements[4].get class="form-control"
+                                                aria-describedby="basic-addon2" id="hukugou"></td>
+                                        <td>{{ requirements[4].border }}</td>
+                                        <td>{{ requirements[4].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- スポーツ・健康科学 -->
+                                        <td>{{ requirements[5].name }}</td>
+                                        <td><input type="text" v-model=requirements[5].get class="form-control"
+                                                aria-describedby="basic-addon2" id="sports"></td>
+                                        <td>{{ requirements[5].border }}</td>
+                                        <td>{{ requirements[5].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 外国語 -->
+                                        <td>{{ requirements[6].name }}</td>
+                                        <td>{{ requirements[6].get }}</td>
+                                        <td>{{ requirements[6].border }}</td>
+                                        <td>{{ requirements[6].summable }}</td>
+                                        <td>{{ requirements[6].result }}</td>
+                                        <td>{{ requirements[6].message }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 工学概論 -->
+                                        <td>{{ requirements[7].name }}</td>
+                                        <td>{{ requirements[7].get }}</td>
+                                        <td>{{ requirements[7].border }}</td>
+                                        <td>{{ requirements[7].summable }}</td>
+                                        <td>{{ requirements[7].result }}</td>
+                                        <td>{{ requirements[7].message }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 技術と技術者の倫理 -->
+                                        <td>{{ requirements[8].name }}</td>
+                                        <td>{{ requirements[8].get }}</td>
+                                        <td>{{ requirements[8].border }}</td>
+                                        <td>{{ requirements[8].summable }}</td>
+                                        <td>{{ requirements[8].result }}</td>
+                                        <td>{{ requirements[8].message }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(200, 255, 237);">
+                                        <!-- 教養科目の合計 -->
+                                        <td>{{ requirements[9].name }}</td>
+                                        <td>{{ sumKyoyo }}</td>
+                                        <td>{{ requirements[9].border }}</td>
+                                        <td>{{ requirements[9].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 基礎科目 -->
+                                        <td>{{ requirements[10].name }}</td>
+                                        <td>{{ sumKiso }}</td>
+                                        <td>{{ requirements[10].border }}</td>
+                                        <td>{{ requirements[10].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 学科共通科目 -->
+                                        <td>{{ requirements[11].name }}</td>
+                                        <td>{{ sumGakka }}</td>
+                                        <td>{{ requirements[11].border }}</td>
+                                        <td>{{ requirements[11].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <!-- コース科目 -->
+                                        <td>{{ requirements[12].name }}</td>
+                                        <td>{{ sumKosu }}</td>
+                                        <td>{{ requirements[12].border }}</td>
+                                        <td>{{ requirements[12].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(240, 240, 240);">
+                                        <!-- 金型創生技術科目 -->
+                                        <td>{{ requirements[13].name }}</td>
+                                        <td><input type="text" v-model=requirements[13].get class="form-control"
+                                                aria-describedby="basic-addon2" id="kanagata"></td>
+                                        <td>{{ requirements[13].border }}</td>
+                                        <td>{{ requirements[13].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(240, 240, 240);">
+                                        <!-- 航空宇宙生産技術科目 -->
+                                        <td>{{ requirements[14].name }}</td>
+                                        <td><input type="text" v-model=requirements[14].get class="form-control"
+                                                aria-describedby="basic-addon2" id="koukuu"></td>
+                                        <td>{{ requirements[14].border }}</td>
+                                        <td>{{ requirements[14].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(240, 240, 240);">
+                                        <!-- 他学科開講科目 -->
+                                        <td>{{ requirements[15].name }}</td>
+                                        <td><input type="text" v-model=requirements[15].get class="form-control"
+                                                aria-describedby="basic-addon2" id="tagakka"></td>
+                                        <td>{{ requirements[15].border }}</td>
+                                        <td rowspan="2">{{ requirements[15].summable }}</td>
+                                        <td rowspan="2">{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(240, 240, 240);">
+                                        <!-- 他大学での履修科目 -->
+                                        <td>{{ requirements[16].name }}</td>
+                                        <td><input type="text" v-model=requirements[16].get class="form-control"
+                                                aria-describedby="basic-addon2" id="tadaigaku"></td>
+                                        <td>{{ requirements[16].border }}</td>
+                                        <!-- <td>{{ requirements[16].summable }}</td>
+                                        <td>{{  }}</td> -->
+                                        <td>{{  }}</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(255, 221, 221);">
+                                        <!-- 総単位数 -->
+                                        <td>{{ requirements[17].name }}</td>
+                                        <td>{{ sumAll }}</td>
+                                        <td>{{ requirements[17].border }}</td>
+                                        <td>{{ requirements[17].summable }}</td>
+                                        <td>{{  }}</td>
+                                        <td>{{  }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- </table> -->
                         </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">自然科学</label><input type="text" v-model=other.shizen class="form-control" aria-describedby="basic-addon2"  id="shizen">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">複合領域</label><input type="text" v-model=other.hukugou class="form-control" aria-describedby="basic-addon2" id="hukugou">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">スポーツ・健康科学</label><input type="text" v-model=other.sports class="form-control" aria-describedby="basic-addon2" id="sports">
-                        </div>
+                    <!-- </div> -->
 
 
-                        
-                        <h4>特別な科目の取得(予定含む)単位数</h4>
-                        
-
-                        <div class="input-group mb-3">
-                            <label for="jinbun">金型創生技術科目</label><input type="text" v-model=other.kanagata class="form-control" aria-describedby="basic-addon2" id="kanagata">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">航空宇宙生産技術科目</label><input type="text" v-model=other.koukuu class="form-control" aria-describedby="basic-addon2" id="koukuu">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">他学科開講科目</label><input type="text" v-model=other.tagakka class="form-control" aria-describedby="basic-addon2" id="tagakka">
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="jinbun">他大学での履修科目</label><input type="text" v-model=other.tadaigaku class="form-control" aria-describedby="basic-addon2" id="tadaigaku">
-                        </div>
-                        
-                    </div>
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="script.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
