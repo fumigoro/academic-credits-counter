@@ -64,17 +64,6 @@ const app = new Vue({
             { take: true, id: 38, subjectCategory: "学科共通科目", compulsory: true, name: "卒業研究", credits: 8, grade: "4年", priority: null },
             { take: false, id: 21, subjectCategory: "基礎科目", compulsory: false, name: "海外インターンシップ", credits: 2, grade: "全期間", priority: null },
         ],
-        // other: {
-        //     jinbun: 0,
-        //     syakai: 0,
-        //     shizen: 0,
-        //     hukugou: 0,
-        //     sports: 0,
-        //     kanagata: 0,
-        //     koukuu: 0,
-        //     tagakka: 0,
-        //     tadaigaku: 0
-        // },
         requirements: [
             { id: 0,isStatic:true, name: "①初年次セミナー", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
             { id: 1,isStatic:false, name: "②人文科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
