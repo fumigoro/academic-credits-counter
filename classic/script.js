@@ -1,4 +1,6 @@
+let resultFlag = {
 
+};
 const app = new Vue({
     el: '#app',
     data: {
@@ -64,25 +66,36 @@ const app = new Vue({
             { take: true, id: 38, subjectCategory: "学科共通科目", compulsory: true, name: "卒業研究", credits: 8, grade: "4年", priority: null },
             { take: false, id: 21, subjectCategory: "基礎科目", compulsory: false, name: "海外インターンシップ", credits: 2, grade: "全期間", priority: null },
         ],
+        // other: {
+        //     jinbun: 0,
+        //     syakai: 0,
+        //     shizen: 0,
+        //     hukugou: 0,
+        //     sports: 0,
+        //     kanagata: 0,
+        //     koukuu: 0,
+        //     tagakka: 0,
+        //     tadaigaku: 0
+        // },
         requirements: [
-            { id: 0,isStatic:true, name: "①初年次セミナー", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
-            { id: 1,isStatic:false, name: "②人文科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
-            { id: 2,isStatic:false, name: "③社会科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
-            { id: 3,isStatic:false, name: "④自然科学", get: null, border: 4, summable: "-", result: null, left: 4, message: null },
-            { id: 4,isStatic:false, name: "⑤複合領域", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
-            { id: 5,isStatic:false, name: "⑥スポーツ・健康科学", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
-            { id: 6,isStatic:true, name: "⑦外国語(英語＋2外)", get: 6, border: 6, summable: 6, result: "OK", left: 6, message: "" },
-            { id: 7,isStatic:true, name: "⑧工学概論*4", get: 4, border: 4, summable: 4, result: "OK", left: 4, message: "" },
-            { id: 8,isStatic:true, name: "⑨技術と技術者の倫理*4", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
-            { id: 9,isStatic:true, name: "⑩教養科目の合計", get: null, border: 34, summable: 38, result: null, left: 34, message: null },
-            { id: 10,isStatic:true, name: "⑪工学部基礎科目", get: 0, border: 29, summable:"-", result: null, left: 29, message: null },
-            { id: 11,isStatic:true, name: "⑫学科共通科目", get: null, border: 28, summable:"-", result: null, left: 28, message: null },
-            { id: 12,isStatic:true, name: "⑬コース科目", get: null, border: 36, summable:"-", result: null, left: 36, message: null },
-            { id: 13,isStatic:false, name: "　金型創生技術科目*1", get: null, border: 0, summable: 8, result: "OK", left: 0, message: "" },
-            { id: 14,isStatic:false, name: "　航空宇宙生産技術科目*1", get: null, border: 0, summable: 15, result: "OK", left: 0, message: "" },
-            { id: 15,isStatic:false, name: "　他学科開講科目*1*2", get: null, border: 0, summable: 10, result: "OK", left: 0, message: "" },
-            { id: 16,isStatic:false, name: "　他大学での履修科目*1*2", get: null, border: 0, summable:4, result: "OK", left: 0, message: "" },
-            { id: 17,isStatic:true, name: "⑭総単位数", get: null, border: 132, summable:"-", result: null, left: 132, message: null },
+            { id: 0, name: "初年次セミナー", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
+            { id: 1, name: "人文科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
+            { id: 2, name: "社会科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
+            { id: 3, name: "自然科学", get: null, border: 4, summable: "-", result: null, left: 4, message: null },
+            { id: 4, name: "複合領域", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
+            { id: 5, name: "スポーツ・健康科学", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
+            { id: 6, name: "外国語(英語＋2外)", get: 6, border: 6, summable: 6, result: "OK", left: 6, message: "" },
+            { id: 7, name: "工学概論", get: 4, border: 4, summable: 4, result: "OK", left: 4, message: "" },
+            { id: 8, name: "技術と技術者の倫理*4", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
+            { id: 9, name: "教養科目の合計*4", get: null, border: 34, summable: 38, result: null, left: 34, message: null },
+            { id: 10, name: "工学部基礎科目", get: null, border: 29, summable:"-", result: null, left: 29, message: null },
+            { id: 11, name: "学科共通科目", get: null, border: 28, summable:"-", result: null, left: 28, message: null },
+            { id: 12, name: "コース科目", get: null, border: 36, summable:"-", result: null, left: 36, message: null },
+            { id: 13, name: "　金型創生技術科目*1", get: null, border: 0, summable: 8, result: "OK", left: 0, message: "" },
+            { id: 14, name: "　航空宇宙生産技術科目*1", get: null, border: 0, summable: 15, result: "OK", left: 0, message: "" },
+            { id: 15, name: "　他学科開講科目*1*2", get: null, border: 0, summable: 10, result: "OK", left: 0, message: "" },
+            { id: 16, name: "　他大学での履修科目*1*2", get: null, border: 0, summable:4, result: "OK", left: 0, message: "" },
+            { id: 17, name: "総単位数", get: null, border: 132, summable:"-", result: null, left: 132, message: null },
 
         ]
     },
@@ -95,7 +108,7 @@ const app = new Vue({
             for (let i in result) {
                 sum += result[i].credits;
             }
-            this.requirements[10].get = sum;
+            return sum;
         },
         sumGakka() {
             const data = this.main;
@@ -104,7 +117,7 @@ const app = new Vue({
             for (let i in result) {
                 sum += result[i].credits;
             }
-            this.requirements[11].get = sum;
+            return sum;
         },
         sumKosu() {
             const data = this.main;
@@ -113,7 +126,7 @@ const app = new Vue({
             for (let i in result) {
                 sum += result[i].credits;
             }
-            this.requirements[12].get = sum;
+            return sum;
         },
         sumKyoyo() {
             let sum = 0;
@@ -121,9 +134,9 @@ const app = new Vue({
                 sum += Number(this.requirements[i].get);
             }
             if(sum>this.requirements[9].summable){
-                sum = this.requirements[9].summable;
+                sum = this.requirements[9].summable+"("+sum+")";
             }
-            this.requirements[9].get = sum;
+            return sum;
         },
         sumAll() {
             const data = this.main;
@@ -134,14 +147,14 @@ const app = new Vue({
                 sum += result[i].credits;
             }
             //教養科目の合計
-            sum += this.requirements[9].get;
+            sum += this.sumKyoyo;
             
             //特別科目4種の合計
             for (let i = 13; i < 17; i++) {
                 
                 sum += Number(this.requirements[i].get);
             }
-            this.requirements[17].get = sum;
+            return sum;
         },
         resultKyoyoSum(){
             const data = this.requirements[9];
@@ -151,43 +164,51 @@ const app = new Vue({
                 get += Number(this.requirements[i].get);
             }
             if(0<=get && get<data.border){
-                this.requirements[9].result="NG"
-                this.requirements[9].message="単位数が不足しています";
+                return ["NG","単位数が不足しています"];
             }else if(get>data.summable){
-                this.requirements[9].result="OK"
-                this.requirements[9].message=(get-data.summable)+"単位超過しています！";
+
+                return ["OK","算入可能単位数を"+(get-data.summable)+"超過しています"];
             }else if(get>=data.border){
-                this.requirements[9].result="OK"
-                this.requirements[9].message=null;
+                return ["OK",""];
             }else{
-                this.requirements[9].result="NG"
-                this.requirements[9].message="取得単位数が不正です";
+                return ["NG","取得単位数が不正です"];
             }
         },
-        resultKogakubu(){
+        resultKogakubuKiso(){
             const data = this.requirements;
-            for(i of [1,2,3,4,5,10,11,12,17]){
-            const get = this.requirements[i].get;
-            if(0<=get && get<data[i].border){
-                this.requirements[i].result="NG";
-                this.requirements[i].message="単位数が不足しています";
-            }else if(get>=data[i].border){
-                this.requirements[i].result="OK";
-                this.requirements[i].message=null;
+            const get = this.sumKiso;
+            if(0<=get && get<data[10].border){
+                return ["NG","単位数が不足しています"];
+            }else if(get>=data[10].border){
+                return ["OK",""];
             }else{
-                this.requirements[i].result="NG";
-                this.requirements[i].message="取得単位数が不正です";
+                return ["NG","取得単位数が不正です"];
             }
-        }
         },
-        
-        finalResult(){
-            for(i in this.requirements){
-                if(this.requirements[i].result!="OK"){
-                    return "満たしていない条件があります。卒業できません。";
-                }
+        resultGakka(){
+            const data = this.requirements;
+            const get = this.sumGakka;
+            if(0<=get && get<data[11].border){
+                return ["NG","単位数が不足しています"];
+            }else if(get>=data[11].border){
+                return ["OK",""];
+            }else{
+                return ["NG","取得単位数が不正です"];
             }
-            return "この計画通り単位を取得すれば卒業できます。";
+        },
+        resultKosu(){
+            const data = this.requirements;
+            const get = this.sumKosu;
+            if(0<=get && get<data[12].border){
+                return ["NG","単位数が不足しています"];
+            }else if(get>=data[12].border){
+                return ["OK",""];
+            }else{
+                return ["NG","取得単位数が不正です"];
+            }
+        },
+        resultFinal(){
+
         }
     },
     methods:{
@@ -204,20 +225,3 @@ const app = new Vue({
         }
     }
 })
-
-
-const element = document.getElementsByClassName("item");
-const gray = [13,14,15,16];
-for(let j of gray){
-    element[j].style="background-color: rgb(238, 238, 238);"
-}
-
-const blue = [9];
-for(let j of blue){
-    element[j].style="background-color: rgb(221, 237, 250);"
-}
-
-const red = [17];
-for(let j of red){
-    element[j].style="background-color: rgb(250, 221, 221);"
-}

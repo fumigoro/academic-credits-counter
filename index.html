@@ -14,15 +14,17 @@
 
 <body class="hold-transition fixed skin-blue-light sidebar-mini ">
     <div class="wrapper">
-        <div style="margin: 20px;">
-
+        <div style="margin-left: 50px;">
+            <h1>履修チェッカー for 電電情報コース 2019年度入学</h1>
         </div>
-
-        <div class="row">
-
-            <div id="app">
-                <div class="container" style="float:left; max-width: 700px; margin-left: 100px;">
-                    <!-- <div class="col-xs-7"> -->
+        <!-- <h1>履修チェッカー</h1> -->
+        <div style="margin: 20px;">
+            <div class="row">
+                <div id="app">
+                    <div class="container" style="float:left; max-width: 700px; margin-left: 30px;">
+                        <h2>専門科目を選択</h2>
+                        <p>履修する専門科目にチェックを入れます。初めから選択されている科目は必修です。</p>
+                        <!-- <div class="col-xs-7"> -->
                         <div class="lectures-list-input">
                             <table class="table">
                                 <thead>
@@ -46,216 +48,69 @@
                                         <td>{{ item.credits }}</td>
                                         <td>{{ item.grade }}</td>
                                         <td>{{ item.priority }}</td>
-
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    <!-- </div>s -->
-                </div>
-                <div class="container" style="float:left; max-width: 910px; margin-left: 100px; position: fixed; right:40px;">
-                    <!-- <div class="col-xs-12"> -->
-                        <div class="result">
-                            
+                        <!-- </div>s -->
+                    </div>
+                    <div class="container" style="float:left; max-width: 850px; margin-left:30px;">
+                        <h2>卒業条件を確認</h2>
+                        <p>②～⑥の全共科目の取得単位数を入力してみましょう。以下の①～⑭の条件を全て満たすことで卒業できます。</p>
+                        <!-- <div class="col-xs-12"> -->
+                        <div class="resultTable">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>条件項目</th>
                                         <th>取得単位数</th>
-                                        <th>卒業に必要な最低単位数</th>
-                                        <th>総数に算入可能な単位数</th>
-                                        <th width="250px">判定</th>
-                                        <th></th>
+                                        <th>卒業に必要な<br>最低単位数</th>
+                                        <th>総数に算入<br>可能な単位数</th>
+                                        <th>判定</th>
+                                        <th width="200px"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <!-- 初年次セミナー -->
-                                        <td>{{ requirements[0].name }}</td>
-                                        <td>{{ requirements[0].get }}</td>
-                                        <td>{{ requirements[0].border }}</td>
-                                        <td>{{ requirements[0].summable }}</td>
-                                        <td>{{ requirements[0].result }}</td>
-                                        <td>{{ requirements[0].message }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 人文科学 -->
-                                        <td>{{ requirements[1].name }}</td>
-                                        <td><input type="text" v-model=requirements[1].get class="form-control"
-                                                aria-describedby="basic-addon2" id="jinbun"></td>
-                                        <td>{{ requirements[1].border }}</td>
-                                        <td>{{ requirements[1].summable }}</td>
-                                        <td>{{ resultKyoyo(1)[0] }}<br>{{ resultKyoyo(1)[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 社会科学 -->
-                                        <td>{{ requirements[2].name }}</td>
-                                        <td><input type="text" v-model=requirements[2].get class="form-control"
-                                                aria-describedby="basic-addon2" id="syakai"></td>
-                                        <td>{{ requirements[2].border }}</td>
-                                        <td>{{ requirements[2].summable }}</td>
-                                        <td>{{ resultKyoyo(2)[0] }}<br>{{ resultKyoyo(2)[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 自然科学 -->
-                                        <td>{{ requirements[3].name }}</td>
-                                        <td><input type="text" v-model=requirements[3].get class="form-control"
-                                                aria-describedby="basic-addon2" id="shizen"></td>
-                                        <td>{{ requirements[3].border }}</td>
-                                        <td>{{ requirements[3].summable }}</td>
-                                        <td>{{ resultKyoyo(1)[0] }}<br>{{ resultKyoyo(3)[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 複合領域 -->
-                                        <td>{{ requirements[4].name }}</td>
-                                        <td><input type="text" v-model=requirements[4].get class="form-control"
-                                                aria-describedby="basic-addon2" id="hukugou"></td>
-                                        <td>{{ requirements[4].border }}</td>
-                                        <td>{{ requirements[4].summable }}</td>
-                                        <td>{{ resultKyoyo(4)[0] }}<br>{{ resultKyoyo(4)[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- スポーツ・健康科学 -->
-                                        <td>{{ requirements[5].name }}</td>
-                                        <td><input type="text" v-model=requirements[5].get class="form-control"
-                                                aria-describedby="basic-addon2" id="sports"></td>
-                                        <td>{{ requirements[5].border }}</td>
-                                        <td>{{ requirements[5].summable }}</td>
-                                        <td>{{ resultKyoyo(5)[0] }}<br>{{ resultKyoyo(5)[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 外国語 -->
-                                        <td>{{ requirements[6].name }}</td>
-                                        <td>{{ requirements[6].get }}</td>
-                                        <td>{{ requirements[6].border }}</td>
-                                        <td>{{ requirements[6].summable }}</td>
-                                        <td>{{ requirements[6].result }}</td>
-                                        <td>{{ requirements[6].message }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 工学概論 -->
-                                        <td>{{ requirements[7].name }}</td>
-                                        <td>{{ requirements[7].get }}</td>
-                                        <td>{{ requirements[7].border }}</td>
-                                        <td>{{ requirements[7].summable }}</td>
-                                        <td>{{ requirements[7].result }}</td>
-                                        <td>{{ requirements[7].message }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 技術と技術者の倫理 -->
-                                        <td>{{ requirements[8].name }}</td>
-                                        <td>{{ requirements[8].get }}</td>
-                                        <td>{{ requirements[8].border }}</td>
-                                        <td>{{ requirements[8].summable }}</td>
-                                        <td>{{ requirements[8].result }}</td>
-                                        <td>{{ requirements[8].message }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(200, 255, 237);">
-                                        <!-- 全共科目の合計 -->
-                                        <td>{{ requirements[9].name }}</td>
-                                        <td>{{ sumKyoyo }}</td>
-                                        <td>{{ requirements[9].border }}</td>
-                                        <td>{{ requirements[9].summable }}</td>
-                                        <td>{{ resultKyoyoSum[0] }}　{{ resultKyoyoSum[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 基礎科目 -->
-                                        <td>{{ requirements[10].name }}</td>
-                                        <td>{{ sumKiso }}</td>
-                                        <td>{{ requirements[10].border }}</td>
-                                        <td>{{ requirements[10].summable }}</td>
-                                        <td>{{ resultKogakubuKiso[0] }}　{{ resultKogakubuKiso[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- 学科共通科目 -->
-                                        <td>{{ requirements[11].name }}</td>
-                                        <td>{{ sumGakka }}</td>
-                                        <td>{{ requirements[11].border }}</td>
-                                        <td>{{ requirements[11].summable }}</td>
-                                        <td>{{ resultGakka[0] }}　{{ resultGakka[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr>
-                                        <!-- コース科目 -->
-                                        <td>{{ requirements[12].name }}</td>
-                                        <td>{{ sumKosu }}</td>
-                                        <td>{{ requirements[12].border }}</td>
-                                        <td>{{ requirements[12].summable }}</td>
-                                        <td>{{ resultKosu[0] }}　{{ resultKosu[1] }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(240, 240, 240);">
-                                        <!-- 金型創生技術科目 -->
-                                        <td>{{ requirements[13].name }}</td>
-                                        <td><input type="text" v-model=requirements[13].get class="form-control"
-                                                aria-describedby="basic-addon2" id="kanagata"></td>
-                                        <td>{{ requirements[13].border }}</td>
-                                        <td>{{ requirements[13].summable }}</td>
-                                        <td>{{ requirements[13].result }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(240, 240, 240);">
-                                        <!-- 航空宇宙生産技術科目 -->
-                                        <td>{{ requirements[14].name }}</td>
-                                        <td><input type="text" v-model=requirements[14].get class="form-control"
-                                                aria-describedby="basic-addon2" id="koukuu"></td>
-                                        <td>{{ requirements[14].border }}</td>
-                                        <td>{{ requirements[14].summable }}</td>
-                                        <td>{{ requirements[14].result }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(240, 240, 240);">
-                                        <!-- 他学科開講科目 -->
-                                        <td>{{ requirements[15].name }}</td>
-                                        <td><input type="text" v-model=requirements[15].get class="form-control"
-                                                aria-describedby="basic-addon2" id="tagakka"></td>
-                                        <td>{{ requirements[15].border }}</td>
-                                        <td>{{ requirements[15].summable }}</td>
-                                        <td>{{  requirements[15].result}}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(240, 240, 240);">
-                                        <!-- 他大学での履修科目 -->
-                                        <td>{{ requirements[16].name }}</td>
-                                        <td><input type="text" v-model=requirements[16].get class="form-control"
-                                                aria-describedby="basic-addon2" id="tadaigaku"></td>
-                                        <td>{{ requirements[16].border }}</td>
-                                        <td>{{ requirements[16].summable }}</td>
-                                        <td>{{ requirements[16].result }}</td>
-                                        <td>{{  }}</td>
-                                    </tr>
-                                    <tr style="background-color: rgb(255, 221, 221);">
-                                        <!-- 総単位数 -->
-                                        <td>{{ requirements[17].name }}</td>
-                                        <td>{{ sumAll }}</td>
-                                        <td>{{ requirements[17].border }}</td>
-                                        <td>{{ requirements[17].summable }}</td>
-                                        <td>{{  }}</td>
-                                        <td>{{  }}</td>
+                                    <tr v-for="item in requirements" class="item">
+                                        <td>{{ item.name }}</td>
+                                        <td><input type="text" v-model=item.get class="form-control"
+                                                aria-describedby="basic-addon2" v-bind:disabled="item.isStatic"></td>
+                                        <td>{{ item.border }}</td>
+                                        <td>{{ item.summable }}</td>
+                                        <td>{{ item.result }}</td>
+                                        <td>{{ item.message }}</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <p class="result">結果：{{finalResult}}</p>
                             <!-- </table> -->
-                            <p>*1 : 金型創生技術科目,航空宇宙生産技術科目,他学科開講科目,他大学での履修科目にはそれぞれ総単位数に算入可能な数に上限がありますが、超過した場合でも自動調整は入りません。入力時に手動にて修正する必要があります。</p>
-                            <p>*2 : 他学科開講科目とは「同一学科他コース開講のコース科目、開講他学科開講の学科共通科目とコース科目を」指します。他大学での履修科目がある場合はそれを含めて10単位までが総単位数に算入可能です。</p>
+                            <p>*1 :
+                                金型創生技術科目,航空宇宙生産技術科目,他学科開講科目,他大学での履修科目にはそれぞれ総単位数に算入可能な数に上限がありますが、超過した場合でも自動調整は入りません。入力時に手動にて修正する必要があります。
+                            </p>
+                            <p>*2 :
+                                他学科開講科目とは「同一学科他コース開講のコース科目、開講他学科開講の学科共通科目とコース科目」を指します。他大学での履修科目がある場合はそれを含めて10単位までが総単位数に算入可能です。
+                            </p>
                             <p>*3 : 教職科目の単位は総単位数に算入することはできません。</p>
                             <p>*4 : 媒体によっては工学概論(4種)および技術と技術者の倫理はまとめて6単位分の「教養基礎」と表記されている場合があります。</p>
-                            
+
+                            <h2>このサイトについて</h2>
+                            <p>「履修チェッカー for 電電情報コース 2019年度入学」(以下、本サイト)は<a href="https://twitter.com/fumi_chandayo">@fumi_chandayo</a>が大学やその他組織とは関係なく個人で作成・公開しているものであり、内容の正確性は保証できません。</p>
+                            <p>本サイトは2019年度入学の工学部電気電子・情報工学科情報コースのカリキュラムをもとに作成しています。それ以外のコース、学年、学科、学部では使用できません。</p>
+
                         </div>
-                    <!-- </div> -->
-
-
+                        <div class="dummy">
+                            {{sumKiso}}
+                            {{sumGakka}}
+                            {{sumKosu}}
+                            {{sumKyoyo}}
+                            {{sumAll}}
+                            {{resultKyoyoSum}}
+                            {{resultKogakubu}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="script.js"></script>
