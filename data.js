@@ -1,4 +1,4 @@
-[
+const data = [
             { take: true, id: 1, subjectCategory: "基礎科目", compulsory: true, name: "工学基礎実験", credits: 1, grade: "1年前期", priority: null },
             { take: true, id: 2, subjectCategory: "基礎科目", compulsory: true, name: "微分積分I", credits: 2, grade: "1年前期", priority: null },
             { take: true, id: 3, subjectCategory: "基礎科目", compulsory: true, name: "線形代数I", credits: 2, grade: "1年前期", priority: null },
@@ -59,9 +59,9 @@
             { take: false, id: 20, subjectCategory: "基礎科目", compulsory: false, name: "技術経営概論", credits: 2, grade: "4年前期", priority: null },
             { take: true, id: 38, subjectCategory: "学科共通科目", compulsory: true, name: "卒業研究", credits: 8, grade: "4年", priority: null },
             { take: false, id: 21, subjectCategory: "基礎科目", compulsory: false, name: "海外インターンシップ", credits: 2, grade: "全期間", priority: null },
-        ]
+        ];
 
-        [
+const data2 = [
             { take: true, id: 1, subjectCategory: "基礎科目", compulsory: true, name: "工学基礎実験", credits: 1, grade: "1年前期", priority: null },
             { take: true, id: 2, subjectCategory: "基礎科目", compulsory: true, name: "微分積分I", credits: 2, grade: "1年前期", priority: null },
             { take: true, id: 3, subjectCategory: "基礎科目", compulsory: true, name: "線形代数I", credits: 2, grade: "1年前期", priority: null },
@@ -122,4 +122,4 @@
             { take: false, id: 58, subjectCategory: "コース科目", compulsory: false, name: "人工知能", credits: 2, grade: "3年後期", priority: null },
             { take: false, id: 59, subjectCategory: "コース科目", compulsory: false, name: "機械学習", credits: 2, grade: "3年後期", priority: null },
             { take: false, id: 60, subjectCategory: "コース科目", compulsory: false, name: "データベース論", credits: 2, grade: "3年後期", priority: null },
-        ]
+        ];
