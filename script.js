@@ -66,9 +66,9 @@ const app = new Vue({
         ],
         requirements: [
             { id: 0,isStatic:true, name: "①初年次セミナー", get: 2, border: 2, summable: 2, result: "OK", left: 2, message: "" },
-            { id: 1,isStatic:false, name: "②人文科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
-            { id: 2,isStatic:false, name: "③社会科学", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
-            { id: 3,isStatic:false, name: "④自然科学", get: null, border: 4, summable: "-", result: null, left: 4, message: null },
+            { id: 1,isStatic:false, name: "②人文科学:5", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
+            { id: 2,isStatic:false, name: "③社会科学*5", get: null, border: 6, summable: "-", result: null, left: 6, message: null },
+            { id: 3,isStatic:false, name: "④自然科学*5", get: null, border: 4, summable: "-", result: null, left: 4, message: null },
             { id: 4,isStatic:false, name: "⑤複合領域", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
             { id: 5,isStatic:false, name: "⑥スポーツ・健康科学", get: null, border: 2, summable: "-", result: null, left: 2, message: null },
             { id: 6,isStatic:true, name: "⑦外国語(英語＋2外)", get: 6, border: 6, summable: 6, result: "OK", left: 6, message: "" },
