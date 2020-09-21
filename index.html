@@ -18,21 +18,18 @@
             <h1>履修チェッカー for 電電情報コース 2019年度入学</h1>
             <h3><a href="https://github.com/fumigoro/academic-credits-counter/blob/master/README.md" target="_blank">詳しい使い方はこちら</a></h3>
         </div>
-        <!-- <h1>履修チェッカー</h1> -->
         <div style="margin: 20px;">
             <div class="row">
                 <div id="app">
                     <div class="container" style="float:left; max-width: 700px; margin-left: 30px;">
                         <h2>専門科目を選択</h2>
                         <p>履修する専門科目にチェックを入れます。初めから選択されている科目は必修です。</p>
-                        <!-- <div class="col-xs-7"> -->
                         <div class="lectures-list-input">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>履修</th>
                                         <th>分類</th>
-                                        <!-- <th>必修</th> -->
                                         <th>科目名</th>
                                         <th>単位数</th>
                                         <th>開講時期</th>
@@ -44,7 +41,6 @@
                                         <td><input type="checkbox" v-bind:id="item.id" v-model="item.take"
                                                 v-bind:disabled="item.compulsory" name="taken-checkbox"></td>
                                         <td>{{ item.subjectCategory }}</td>
-                                        <!-- <td>{{ item.take }}</td> -->
                                         <td>{{ item.name }}</td>
                                         <td>{{ item.credits }}</td>
                                         <td>{{ item.grade }}</td>
@@ -53,12 +49,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- </div>s -->
                     </div>
                     <div class="container" style="float:left; max-width: 850px; margin-left:30px;">
                         <h2>卒業条件を確認</h2>
                         <p>②～⑥の全共科目の取得単位数を入力してみましょう。以下の①～⑭の条件を全て満たすことで卒業できます。</p>
-                        <!-- <div class="col-xs-12"> -->
                         <div class="resultTable">
                             <table class="table">
                                 <thead>
@@ -66,7 +60,7 @@
                                         <th>条件項目</th>
                                         <th>取得単位数</th>
                                         <th>卒業に必要な<br>最低単位数</th>
-                                        <th>総数に算入<br>可能な単位数</th>
+                                        <th>総数に算入可能<br>な上限単位数</th>
                                         <th>判定</th>
                                         <th width="200px"></th>
                                     </tr>
@@ -84,13 +78,8 @@
                                 </tbody>
                             </table>
                             <p class="result">結果：{{finalResult}}</p>
-                            <!-- </table> -->
-                            <p>*1 :
-                                金型創生技術科目,航空宇宙生産技術科目,他学科開講科目,他大学での履修科目にはそれぞれ総単位数に算入可能な数に上限がありますが、超過した場合でも自動調整は入りません。入力時に手動にて修正する必要があります。
-                            </p>
-                            <p>*2 :
-                                他学科開講科目とは「同一学科他コース開講のコース科目、開講他学科開講の学科共通科目とコース科目」を指します。他大学での履修科目がある場合はそれを含めて10単位までが総単位数に算入可能です。
-                            </p>
+                            <p>*1 : 金型創生技術科目,航空宇宙生産技術科目,他学科開講科目,他大学での履修科目にはそれぞれ総単位数に算入可能な数に上限がありますが、超過した場合でも自動調整は入りません。入力時に手動にて修正する必要があります。</p>
+                            <p>*2 : 他学科開講科目とは「同一学科他コース開講のコース科目、開講他学科開講の学科共通科目とコース科目」を指します。他大学での履修科目がある場合はそれを含めて10単位までが総単位数に算入可能です。</p>
                             <p>*3 : 教職科目の単位は総単位数に算入することはできません。</p>
                             <p>*4 : 媒体によっては工学概論(4種)および技術と技術者の倫理はまとめて6単位分の「教養基礎」と表記されている場合があります。</p>
 
@@ -98,7 +87,6 @@
                             <p><a href="https://github.com/fumigoro/academic-credits-counter/blob/master/README.md" target="_blank">詳しい使い方はこちら</a></p>
                             <p>「履修チェッカー for 電電情報コース 2019年度入学」(以下、本サイト)は<a href="https://twitter.com/fumi_chandayo">@fumi_chandayo</a>が大学やその他組織とは関係なく個人で作成・公開しているものであり、内容の正確性は保証できません。</p>
                             <p>本サイトは2019年度入学の工学部電気電子・情報工学科情報コースのカリキュラムをもとに作成しています。それ以外のコース、学年、学科、学部では使用できません。</p>
-
                         </div>
                         <div class="dummy">
                             {{sumKiso}}
